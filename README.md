@@ -16,6 +16,12 @@ The complete validation will check address syntax first, after that will check f
 
 # E-mail provider check
 
+Before using these methods you should set up dictionaries as following:
+
+`emailAddressValidator.setWhiteListDatabasePath('whitelist.txt');`
+`emailAddressValidator.setBlackListDatabasePath('blacklist.txt');`
+`emailAddressValidator.setDisposableProvidersDatabasePath('disposable.txt');`
+
 Check if the e-mail provider is accepted:
 
 `emailAddressValidator.isTrustedProvider(email, disposableAllowed, strict, asynchronous);`
