@@ -120,7 +120,11 @@ var emailAddressValidator = {
 	loadWhiteListCache: function(asynchronous){
 		if ( asynchronous !== false ){
 			return new Promise(function(resolve, reject){
-				resolve(emailAddressValidator.loadWhiteListCache(false));
+				try{
+					resolve(emailAddressValidator.loadWhiteListCache(false));
+				}catch(ex){
+					reject(ex);
+				}
 			});
 		}
 		if ( this.whiteListCache === false || this.whiteListDatabasePath === '' || typeof(this.whiteListDatabasePath) !== 'string' ){
@@ -134,7 +138,6 @@ var emailAddressValidator = {
 			this.whiteListDatabase = content;
 			return true;
 		}catch(ex){
-			console.log(ex);
 			throw 'Unable to load the dictionary.';
 		}
 	},
@@ -211,7 +214,11 @@ var emailAddressValidator = {
 	loadBlackListCache: function(asynchronous){
 		if ( asynchronous !== false ){
 			return new Promise(function(resolve, reject){
-				resolve(emailAddressValidator.loadBlackListCache(false));
+				try{
+					resolve(emailAddressValidator.loadBlackListCache(false));
+				}catch(ex){
+					reject(ex);
+				}
 			});
 		}
 		if ( this.blackListCache === false || this.blackListDatabasePath === '' || typeof(this.blackListDatabasePath) !== 'string' ){
@@ -225,7 +232,6 @@ var emailAddressValidator = {
 			this.blackListDatabase = content;
 			return true;
 		}catch(ex){
-			console.log(ex);
 			throw 'Unable to load the dictionary.';
 		}
 	},
@@ -302,7 +308,11 @@ var emailAddressValidator = {
 	loadDisposableProvidersCache: function(asynchronous){
 		if ( asynchronous !== false ){
 			return new Promise(function(resolve, reject){
-				resolve(emailAddressValidator.loadDisposableProvidersCache(false));
+				try{
+					resolve(emailAddressValidator.loadDisposableProvidersCache(false));
+				}catch(ex){
+					reject(ex);
+				}
 			});
 		}
 		if ( this.disposableProvidersCache === false || this.disposableProvidersDatabasePath === '' || typeof(this.disposableProvidersDatabasePath) !== 'string' ){
@@ -316,7 +326,6 @@ var emailAddressValidator = {
 			this.disposableProvidersDatabase = content;
 			return true;
 		}catch(ex){
-			console.log(ex);
 			throw 'Unable to load the dictionary.';
 		}
 	},
@@ -477,7 +486,6 @@ var emailAddressValidator = {
 						}
 					}
 				}catch(ex){
-					console.log(ex);
 					throw 'Unable to read from white list database.';
 				}
 			}
@@ -508,7 +516,6 @@ var emailAddressValidator = {
 						}
 					}
 				}catch(ex){
-					console.log(ex);
 					throw 'Unable to read from black list database.';
 				}
 			}
@@ -519,7 +526,6 @@ var emailAddressValidator = {
 					return false;
 				}
 			}catch(ex){
-				console.log(ex);
 				throw 'Unable to check the given provider.';
 			}
 		}
@@ -582,7 +588,6 @@ var emailAddressValidator = {
 			}
 			return false;
 		}catch(ex){
-			console.log(ex);
 			throw 'Unable to read from the disposable providers database.';
 		}
 	}
