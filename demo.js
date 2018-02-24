@@ -1,9 +1,9 @@
-const emailAddressValidator = require('./email-address-validator').emailAddressValidator;
+const emailAddressValidator = require('email-address-validator').emailAddressValidator;
 
 //Setting up lists.
-emailAddressValidator.setWhiteListDatabasePath('whitelist.txt');
-emailAddressValidator.setBlackListDatabasePath('blacklist.txt');
-emailAddressValidator.setDisposableProvidersDatabasePath('disposable.txt');
+emailAddressValidator.setWhiteListDatabasePath(__dirname + '/whitelist.txt');
+emailAddressValidator.setBlackListDatabasePath(__dirname + '/blacklist.txt');
+emailAddressValidator.setDisposableProvidersDatabasePath(__dirname + '/disposable.txt');
 
 let email = 'foo.bar@mail.com';
 let disposable = 'foo.bar@yourdomain.com';

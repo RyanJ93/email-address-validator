@@ -127,7 +127,7 @@ var emailAddressValidator = {
 			return false;
 		}
 		try{
-			let content = filesystem.readFileSync(__dirname + '/' + this.whiteListDatabasePath).toString();
+			let content = filesystem.readFileSync(this.whiteListDatabasePath).toString();
 			if ( content === '' ){
 				return false;
 			}
@@ -218,7 +218,7 @@ var emailAddressValidator = {
 			return false;
 		}
 		try{
-			let content = filesystem.readFileSync(__dirname + '/' + this.blackListDatabasePath).toString();
+			let content = filesystem.readFileSync(this.blackListDatabasePath).toString();
 			if ( content === '' ){
 				return false;
 			}
@@ -309,7 +309,7 @@ var emailAddressValidator = {
 			return false;
 		}
 		try{
-			let content = filesystem.readFileSync(__dirname + '/' + this.disposableProvidersDatabasePath).toString();
+			let content = filesystem.readFileSync(this.disposableProvidersDatabasePath).toString();
 			if ( content === '' ){
 				return false;
 			}
@@ -443,8 +443,7 @@ var emailAddressValidator = {
 				try{
 					resolve(emailAddressValidator.isTrustedProvider(string, disposableAllowed, strict, false));
 				}catch(ex){
-					console.log(ex);
-					reject();
+					reject(ex);
 				}
 			});
 		}
@@ -465,7 +464,7 @@ var emailAddressValidator = {
 				}
 			}else{
 				try{
-					let database = filesystem.readFileSync(__dirname + '/' + this.whiteListDatabasePath).toString();
+					let database = filesystem.readFileSync(this.whiteListDatabasePath).toString();
 					if ( database !== '' ){
 						if ( this.whiteListCache === true ){
 							this.whiteListDatabase = database;
@@ -496,7 +495,7 @@ var emailAddressValidator = {
 				}
 			}else{
 				try{
-					let database = filesystem.readFileSync(__dirname + '/' + this.blackListDatabasePath).toString();
+					let database = filesystem.readFileSync(this.blackListDatabasePath).toString();
 					if ( database !== '' ){
 						if ( this.blackListCache === true ){
 							this.blackListDatabase = database;
@@ -545,8 +544,7 @@ var emailAddressValidator = {
 				try{
 					resolve(emailAddressValidator.isDisposableProvider(string, false));
 				}catch(ex){
-					console.log(ex);
-					reject();
+					reject(ex);
 				}
 			});
 		}
@@ -570,7 +568,7 @@ var emailAddressValidator = {
 			return false;
 		}
 		try{
-			let database = filesystem.readFileSync(__dirname + '/' + this.disposableProvidersDatabasePath).toString();
+			let database = filesystem.readFileSync(this.disposableProvidersDatabasePath).toString();
 			if ( database !== '' ){
 				if ( this.blackListCache === true ){
 					this.blackListDatabase = database;
